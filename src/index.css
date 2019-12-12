@@ -3,3 +3,34 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.employee-list  {
+           border:1px solid #cbbfab;
+           list-style-type : none;
+           padding: 5px;
+           margin: 5px;
+         }
+         .employee {
+            border: 1px solid #ccc;
+            margin: 5px;
+            padding: 5px;
+         }
+
+
+         .btncss{    margin-left: auto;
+    margin-right: auto;
+    background-color: #15746D;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;}
+.inputtags{border: 1px solid #8e8e8e;
+    height: 35px;
+    border-radius: 4px;
+    width: 100%;
+    padding-left: 10px;}
+    .error{
+    	    color: red;
+    font-size: 12px;
+    }

@@ -60,14 +60,14 @@ class LoginForm extends Component {
       <h1>Login</h1>
       <form onSubmit={this.handleSubmit}>
        <input required type="text" ref={(input)=>this.email = input} 
-        placeholder="Enter Email"/>
-        <div  id="emailErr">{this.state.value.emailErr}</div>
+        placeholder="Enter Email" className="inputtags"/>
+        <div  id="emailErr" className="error">{this.state.value.emailErr}</div>
        <br /><br />
        <input required type="text" ref={(input)=>this.pass = input}  
-        placeholder="Enter Password" />
-        <div  id="passErr">{this.state.value.passErr}</div>
+        placeholder="Enter Password" className="inputtags"/>
+        <div  id="passErr" className="error">{this.state.value.passErr}</div>
        <br /><br />
-        <button>Login</button>
+        <button className="btncss">Login</button>
       </form>
     </div>
   
