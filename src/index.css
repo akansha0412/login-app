@@ -28,9 +28,11 @@ body {
 .inputtags{border: 1px solid #8e8e8e;
     height: 35px;
     border-radius: 4px;
-    width: 100%;
-    padding-left: 10px;}
+    width: 80%;
+    padding-left: 10px;
+margin-left: 20px}
     .error{
     	    color: red;
     font-size: 12px;
+    margin-left: 20px
     }
