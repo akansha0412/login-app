@@ -1,37 +1,83 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import List from './List';
+
+
 
 class LoginForm extends Component {
+   constructor(props) {
+        super(props);
+        this.state = {
+            'value': {
+                'emailErr': '',
+                'passErr': '',
+                'errFlag': false
+            },
+            flag :'login'
+        };
+
+    }
     handleSubmit = (e) => {
+        
+        var valueObj = this.state.value;
         e.preventDefault();
-        const title = this.getTitle.value;
-        const message =  this.getMessage.value;
-        const data = {
-          id: new Date(),
-          title,
-          message
+        const email = this.email.value;
+        const pass =  this.pass.value;
+        if(email != 'hruday@gmail.com'){
+          valueObj['emailErr'] = 'Please enter correct name';
+            valueObj['errFlag'] = true;
         }
+        if(pass != 'hruday123'){
+          valueObj['passErr'] = 'Please enter correct password';
+            valueObj['errFlag'] = true;
+        }
+        this.setState({ value: valueObj });
+        if (this.state.value.errFlag) {
+          
+          this.email.value = '';
+        this.pass.value = '';
+        this.state.value.errFlag = false;
+        
+        }
+        else
+        {
+          
+          this.state.value.emailErr = '';
+        this.state.value.passErr = '';
         this.props.dispatch({
-          type:'ADD_POST',
-          data});
-        this.getTitle.value = '';
-        this.getMessage.value = '';
+          type:'ADD_POST'});
+        this.setState({ flag: 'list' });
       }
-    render() { console.log(this.props.posts)
+        
+      }
+
+     
+    render() { 
+      if(this.state.flag =='login'){
     return ( 
+      
     <div>
-      <h1>Create Post</h1>
+      <h1>Login</h1>
       <form onSubmit={this.handleSubmit}>
-       <input required type="text" ref={(input)=>this.getTitle = input} 
+       <input required type="text" ref={(input)=>this.email = input} 
         placeholder="Enter Email"/>
+        <div  id="emailErr">{this.state.value.emailErr}</div>
        <br /><br />
-       <input required type="text" ref={(input)=>this.getMessage = input}  
+       <input required type="text" ref={(input)=>this.pass = input}  
         placeholder="Enter Password" />
+        <div  id="passErr">{this.state.value.passErr}</div>
        <br /><br />
-       <button>Login</button>
+        <button>Login</button>
       </form>
     </div>
+  
     );
+  }
+  else{
+    return(
+ <List lists={this.props.posts}/>
+    );
+  }
     }
     }
     const mapStateToProps = (state) => {
@@ -40,8 +86,6 @@ class LoginForm extends Component {
         }
     }
 
-    // <button 
-    // onClick={()=>this.props.dispatch({type:'DELETE_POST',id:this.props.post.id})}>
-    // Delete</button>
+  
     export default connect(mapStateToProps)(LoginForm);
     
